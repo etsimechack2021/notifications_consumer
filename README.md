@@ -18,11 +18,11 @@ The next image is a capture from the Follow Mec Dashboard:
 
 ![dashboard](./src/notifications/static/images/dashboard.png)
 
-All the Information showed is updated in real time:
+All the Information shown is updated in real time:
 - Sandbox Map: the route followed by the drone in surveillance mode can be seen. In Tracking mode, an alerting image appears.
 - Coverage Section: depending on the coverage area where the drone is passing through, it shows: 4G, 5G, Wifi or No Signal.
 - Zonal Status Section: shows the zone information where the drone is flying, reflecting the current access point, the previous one, etc.
-- Sandbox Notifications: shows the lastest types of notifications received from the sandbox and the time they were received.
+- Sandbox Notifications: shows the latest types of notifications received from the sandbox and the time they were received.
 - Reference Signal: in 4G/5G cases, it shows the reference signal power and quality received in the zone where the drone is flying.
 - Video Streaming: 
   - 5G/Wifi cases: shows the AI inferenced video stream in higher quality
