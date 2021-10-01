@@ -10,54 +10,7 @@ With the information from the AI module, the notifications consumer publishes an
 
 ## Scenario
 
-```plantuml
-
-skinparam sequenceBoxBorderColor #white
-skinparam participantbackgroundcolor #white
-skinparam participantbordercolor #white
-skinparam actorbackgroundcolor #white
-skinparam actorbordercolor #black
-
-
-actor "MEC\nManager" as man
-actor drone
-
-box "MEC Services" #LightBlue
-  participant "Sandbox\nControl" as ctrl
-  participant Location as loc
-  participant "Radio Network\nInformation" as rni
-  participant "Wlan Access\nInformation" as wai  
-end box
-
-box "MEC Apps" #MistyRose
-  participant "Notifications\nConsumer\n+\nMonitoring" as cc
-  participant "IA\n(Follow Mec)" as tr  
-end box
-
-== Configuration ==
-
-man -> ctrl: Drone UE creation
-ctrl --> man: 201
-man -> loc: Subscription Creation:\n - User Tracking Subscription
-loc --> ctrl: 201
-man -> rni: Subscription Creation:\n - MeasRepUe Subscription\n - NrMeasRepUe Subscription 
-rni --> man: 201
-man -> wai: Subscription Creation:\n - AssocSta Subscription
-wai --> man: 201
-
-== Normal Operation ==
-loop
-  drone -> tr: video stream
-  loc -> cc: location information
-  rni -> cc: rni information
-  wai -> cc: wai information
-  cc -> tr: MEC Services\ninformation 
-  tr -> tr: Deep Learning
-  tr -> drone: operate in mode:\n - surveillance mode\n - tracking mode
-  tr -> cc: Application Info
-  cc -> cc: Show:\n - Sandbox Info\n - App Info
-end
-```
+![puml](./src/tools/puml.png)
 
 ## Dashboard
 
