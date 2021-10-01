@@ -1,0 +1,12 @@
+{
+  "subscriptionType": "MeasRepUeSubscription",
+  "callbackReference": "http://193.146.210.231:6100/callbacks/rni/4g",
+  "filterCriteriaAssocTri": {
+    "associateId": [
+      {
+        "type": 1,
+        "value": "10.100.0.1"
+      }
+    ]
+  }
+}

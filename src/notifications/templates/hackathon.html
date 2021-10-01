@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A Team - ETSI MEC Hackathon 2021</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">    
+    <link href={{ url_for('static', filename='main.css' ) }} rel="stylesheet">
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">    
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-main__inner">
+            <!-- Page Title-->            
+            <div class="row" style="height: 10em;">
+                <div class="col-md-6 col-xl-5">
+                    <h3 style="margin-top: 3em; margin-left: 1em;">A Team - ETSI MEC Hackathon 2021</h3>
+                </div>
+                <div class="col-md-6 col-xl-5">
+                    <img src="{{ url_for('static', filename='images/optare.png') }}" style='height: 50%; width: 50%; object-fit: contain; margin-top: 5em; margin-left: 1em;'/>
+                </div>
+                <div class="col-md-6 col-xl-2">
+                    <img src="{{ url_for('static', filename='images/atlanttic.png') }}" style='height: 70%; width: 70%; object-fit: contain; margin-top: 5em; margin-left: 3em;'/>
+                </div>
+            </div>            
+            <div class="row" style="margin-top: 5em;">
+                <div class="col-md-6 col-xl-9">
+                    <div class="row">
+                        <!-- Map -->
+                        <div class="col-md-6 col-xl-6">
+                            <!--div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title">                                                    
+                                        Sandbox
+                                    </div>
+                                    <ul class="nav">
+                                        <li class="nav-item"><a data-toggle="tab" id="tab0" href="#tab-eg5-0" class="nav-link active" onclick="activateTab('tab0')">Map</a></li>
+                                        <li class="nav-item"><a data-toggle="tab" id="tab1" href="#tab-eg5-1" class="nav-link" onclick="activateTab('tab1')">API Console</a></li>                                                    
+                                    </ul>
+                                </div>
+                                <div class="card-body" style="height: 22em; margin-top: 0em;">
+                                    <div class="tab-content" style="margin-top: 0em;">
+                                        <div id="tab0_content" class="tab-pane active"role="tabpanel"><div style="overflow: hidden; max-width: 860px;">
+                                            <iframe scrolling="no" 
+                                            src="https://a-team.mec-hackathon-2021.interdigital.dev/" 
+                                            style="border: 0px none; margin-left: -10px; height: 300px; margin-top: -33px; width: 1330px;">
+                                            </iframe>
+                                            </div>
+                                        </div>
+                                        <div id="tab1_content" class="tab-pane"role="tabpanel"><div style="overflow: hidden; max-width: 860px;">
+                                            <div id="dialog" style="width: 800px; height: 500px;">                                                
+                                                <iframe id="myIframe" src="https://a-team.mec-hackathon-2021.interdigital.dev/" style="border: 0px none; margin-left: -10px; height: 900px; margin-top: -650px; width: 1370px;"></iframe>
+                                            </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>                                            
+                            </div-->
+                            <div id="map" class="main-card card" style="height: 24rem;"><div class="embed-responsive embed-responsive-16by9"><iframe
+                                        class="embed-responsive-item"
+                                        src="https://a-team.mec-hackathon-2021.interdigital.dev" scrolling="no"
+                                        style="width: 1190px; height: 400; margin-top: 10px; margin-left: -10px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Coverage -->
+                        <div class="col-md-5 col-xl-2">
+                            <div class="main-card mb-1 card" style="height: 24rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Coverage</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div id="coverage_4G" class="card widget-content bg-heavy-rain"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-center">
+                                                        <div class="widget-numbers fsize-2 text-white">4G</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="coverage_5G" class="card widget-content bg-heavy-rain"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-center">
+                                                        <div class="widget-numbers fsize-2 text-white">5G</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="coverage_wifi" class="card widget-content bg-heavy-rain"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-center">
+                                                        <div class="widget-numbers fsize-2 text-white">Wifi</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="coverage_no_signal" class="card widget-content bg-love-kiss"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-center">
+                                                        <div class="widget-numbers fsize-2 text-white">No Signal</div>
+                                                        <!--div class="font-icon-wrapper">
+                                                        <i class="fa fa-fw"></i>
+                                                    </div-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Zonal Status -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="main-card mb-1 card" style="height: 24rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Zonal Status</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="card widget-content bg-arielle-smile" style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Zone</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="zone" class="widget-numbers fsize-2 text-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="zonal_state" class="card widget-content bg-heavy-rain"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">State</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="state" class="widget-numbers fsize-2 text-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="cap" class="card widget-content bg-midnight-bloom"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Current Access Point</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="currentAP" class="widget-numbers fsize-2 text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="card widget-content bg-midnight-bloom" style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Prevoius Access Point</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="previousAP" class="widget-numbers fsize-2 text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-xl-3">
+                            <!-- App Information -->
+                            <div class="main-card card" style="height: 24rem; margin-top: 2em;">
+                                <div class="card-body">
+                                    <h5 class="card-title">App Information</h5>
+                                    <ul class="list-group" style="margin-top: 4em;">
+                                        <li class="list-group-item">
+                                            <div id="ai_card" class="card widget-content bg-heavy-rain"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">AI</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="ai_text" class="widget-numbers fsize-2 text-white">Not
+                                                            Running</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="zonal_state" class="card widget-content bg-midnight-bloom"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Mode</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="drone_mode" class="widget-numbers fsize-2 text-white">
+                                                            Surveillance</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div id="cap" class="card widget-content bg-midnight-bloom"
+                                                style="height: 3rem;">
+                                                <div class="widget-content-wrapper text-white">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Video Bitrate</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div id="bitrate"
+                                                            class="widget-numbers fsize-2 text-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-xl-6">
+                            <!-- Video -->
+                            <div id="stream" class="main-card card" style="height: 24rem; margin-top: 2em;"><div class="embed-responsive embed-responsive-16by9"><iframe 
+                                        class="embed-responsive-item" 
+                                        src="{{ video_stream }}" scrolling="no">
+                                    </iframe>        
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="col-md-5 col-xl-3">
+                            <!-- Reference Signal -->
+                            <div class="main-card mb-1 card" style="height: 24rem; margin-top: 2em;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reference Signal Received</h5>
+                                    <canvas id="canvas" style="margin-top: 2em;" width="400" height="400"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <!-- Sandbox Notifications -->
+                    <div class="main-card card" style="height: 50rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Sandbox Notifications</h5>
+                            <div class="scroll-area-lg" style="height: 700px;">
+                                <div id="notifications" class="scrollbar-container ps--active-y ps">
+                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                    </div>
+                                    <div class="ps__rail-y" style="top: 0px; height: 700px; right: 0px;">
+                                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 244px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--script type="text/javascript" src={{ url_for('static', filename='scripts/main.js' ) }}></script-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src={{ url_for('static', filename='scripts/socket.io.js' )}}></script>
+        <script src={{ url_for('static', filename='scripts/jquery.min.js' )}}></script>
+        <script>
+            $(document).ready(function () {
+
+                var location_socket = io.connect('http://' + document.domain + ':' + location.port + '/location');
+                var rni_socket = io.connect('http://' + document.domain + ':' + location.port + '/rni');
+                var wai_socket = io.connect('http://' + document.domain + ':' + location.port + '/wai');
+                var appMode_socket = io.connect('http://' + document.domain + ':' + location.port + '/appMode');
+                var appBr_socket = io.connect('http://' + document.domain + ':' + location.port + '/appBr');
+
+                var cardYellowClass = 'bg-sunny-morning';
+                var cardGreenClass = 'bg-grow-early';
+                var cardRedClass = 'bg-love-kiss';
+                var cardGrayClass = 'bg-heavy-rain';
+                var cardDarkBlueClass = 'bg-midnight-bloom';
+
+                var wifi = false;
+                var fourG = false;
+                var fiveG = false;
+                var noSignal = true;
+                var rsrData = [0, 0];
+
+                var timestamp;
+
+                // canvas
+                const config = {
+                    type: 'bar',
+                    data: {
+                        labels: ['Power', 'Quality'],
+                        datasets: [{
+                            data: rsrData,
+                            backgroundColor: [
+                                'rgba(255, 8, 68, 1)',
+                                'rgba(70, 174, 247, 1)'
+                            ]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 100
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                };
+
+                const ctx = document.getElementById('canvas').getContext("2d");
+                const myChart = new Chart(ctx, config);
+
+                function coverageColours() {
+
+                    coverage5gOldClass = document.getElementById('coverage_5G').className.split(" ");
+                    coverage5gOldClass = coverage5gOldClass[coverage5gOldClass.length - 1];
+                    coverage4gOldClass = document.getElementById('coverage_4G').className.split(" ");
+                    coverage4gOldClass = coverage4gOldClass[coverage4gOldClass.length - 1];
+                    coverageWifiOldClass = document.getElementById('coverage_wifi').className.split(" ");
+                    coverageWifiOldClass = coverageWifiOldClass[coverageWifiOldClass.length - 1];
+                    coverageNoSignalOldClass = document.getElementById('coverage_no_signal').className.split(" ");
+                    coverageNoSignalOldClass = coverageNoSignalOldClass[coverageNoSignalOldClass.length - 1];
+
+                    if (noSignal) {
+                        document.getElementById('coverage_5G').classList.replace(coverage5gOldClass, cardGrayClass);
+                        document.getElementById('coverage_4G').classList.replace(coverage4gOldClass, cardGrayClass);
+                        document.getElementById('coverage_wifi').classList.replace(coverageWifiOldClass, cardGrayClass);
+                        document.getElementById('coverage_no_signal').classList.replace(coverageNoSignalOldClass, cardRedClass);                        
+                    } else {                        
+                        if (fiveG) {
+                            document.getElementById('coverage_5G').classList.replace(coverage5gOldClass, cardGreenClass);
+                            document.getElementById('coverage_4G').classList.replace(coverage4gOldClass, cardGrayClass);
+                            document.getElementById('coverage_wifi').classList.replace(coverageWifiOldClass, cardGrayClass);
+                            document.getElementById('coverage_no_signal').classList.replace(coverageNoSignalOldClass, cardGrayClass);
+                        } else {
+                            if (fourG && !wifi) {
+                                document.getElementById('coverage_5G').classList.replace(coverage5gOldClass, cardGrayClass);
+                                document.getElementById('coverage_4G').classList.replace(coverage4gOldClass, cardYellowClass);
+                                document.getElementById('coverage_wifi').classList.replace(coverageWifiOldClass, cardGrayClass);
+                                document.getElementById('coverage_no_signal').classList.replace(coverageNoSignalOldClass, cardGrayClass);
+                            } else {
+                                //wifi
+                                document.getElementById('coverage_5G').classList.replace(coverage5gOldClass, cardGrayClass);
+                                document.getElementById('coverage_4G').classList.replace(coverage4gOldClass, cardGrayClass);
+                                document.getElementById('coverage_wifi').classList.replace(coverageWifiOldClass, cardGreenClass);
+                                document.getElementById('coverage_no_signal').classList.replace(coverageNoSignalOldClass, cardGrayClass);
+                            }
+                        }
+                    }
+                }
+
+                function appendNewNotification(type) {
+
+                    //<div class="card mb-3 widget-content">                                        
+                    //    <div class="widget-content-wrapper">
+                    //        <div class="widget-content-left">
+                    //            <div class="widget-heading">Timestamp</div>                                            
+                    //        </div>
+                    //        <div class="widget-content-right">
+                    //            <div class="widget-numbers fsize-1 text-primary">
+                    //                <span>zonalPresenceNotification</span>
+                    //            </div>
+                    //        </div>
+                    //    </div>
+                    //</div>
+
+                    var card = document.createElement("div");
+                    card.className = "card mb-3 widget-content";
+
+                    var contentWrapper = document.createElement("div");
+                    contentWrapper.className = "widget-content-wrapper";
+
+                    var contentLeft = document.createElement("div");
+                    contentLeft.className = "widget-content-left";
+
+                    var heading = document.createElement("div");
+                    heading.className = "widget-heading";
+                    heading.textContent = newDateString();
+
+                    contentLeft.appendChild(heading);
+                    contentWrapper.appendChild(contentLeft);
+
+                    var contentRight = document.createElement("div");
+                    contentRight.className = "widget-content-right";
+
+                    var wNumbers = document.createElement("div");
+                    wNumbers.className = "widget-numbers fsize-1 text-primary";
+
+                    var span = document.createElement("span");
+                    span.textContent = type;
+
+                    wNumbers.appendChild(span);
+                    contentRight.appendChild(wNumbers);
+
+                    contentWrapper.appendChild(contentRight);
+
+                    card.appendChild(contentWrapper);
+
+                    notifications = document.getElementById("notifications");
+                    notifications.insertBefore(card, notifications.firstChild);
+                }
+
+                function newDateString() {
+                    var date = new Date();
+
+                    var h = date.getHours();
+                    var m = date.getMinutes();
+                    var s = date.getSeconds();
+                    var ms = date.getMilliseconds();
+
+                    var dateString = h + ":" + m + ":" + s + "." + ms;
+
+                    return dateString;
+                }
+
+                function showSandboxMap() {
+
+                    var map = document.getElementById("map");
+                    var existingChild = map.firstChild
+                    console.log(existingChild.nodeName);
+                    if (existingChild.nodeName != "embed-responsive") {
+                        //<div class="embed-responsive embed-responsive-16by9"">
+                        //    <iframe class="embed-responsive-item"
+                        //        src="https://a-team.mec-hackathon-2021.interdigital.dev" scrolling="no"
+                        //        style="width: 1190px; height: 400; margin-top: 10px; margin-left: -10px;">
+                        //    </iframe>
+                        //<div>
+                        var div = document.createElement("div");
+                        div.className = "embed-responsive embed-responsive-16by9";
+
+                        var iframe = document.createElement("iframe");
+                        iframe.className = "embed-responsive-item";
+                        iframe.src = "https://a-team.mec-hackathon-2021.interdigital.dev";
+                        iframe.scrolling = "no";
+                        iframe.style = "width: 1190px; height: 400; margin-top: 10px; margin-left: -10px;"
+
+                        div.appendChild(iframe);
+
+                        map.replaceChild(div, existingChild);
+                    }
+                }
+
+                function hideSandBoxMap() {
+                    var map = document.getElementById("map");
+                    var existingChild = map.firstChild;
+                    if (existingChild.className != "card-body") {
+
+                        //<div class="card-body">
+                        //    <h5 class="card-title">Unauthorized Person Detected</h5>
+                        //    <img src="{{ url_for('static', filename='images/unauthorized-person-detected.png') }}" style='height: 90%; width: 90%; object-fit: contain; margin-left: 4em;'>
+                        //</div>
+
+                        var div = document.createElement("div");
+                        div.className = "card-body";
+
+                        var title = document.createElement("h5");
+                        title.className = "card-title";
+                        title.textContent = "Unauthorized Person Detected"
+
+                        div.appendChild(title);
+
+                        var img = document.createElement("img");
+                        img.src = "{{ url_for('static', filename='images/unauthorized-person-detected.png') }}";
+                        img.style = "height: 90%; width: 90%; object-fit: contain; margin-left: 4em;";
+
+                        div.appendChild(img);
+
+                        map.replaceChild(div, existingChild);
+                    }
+                }
+
+
+                function showVideoStream() {                  
+
+                    var stream = document.getElementById("stream"); 
+                    var existingChild = stream.firstChild;
+                    if (existingChild != "embed-responsive"){
+                        
+                        var div = document.createElement("div");
+                        div.className = "embed-responsive embed-responsive-16by9";
+
+                        var iframe = document.createElement("iframe");
+                        iframe.id="stream";
+                        iframe.className = "embed-responsive-item";
+                        iframe.src = "{{ video_stream }}";
+                        iframe.scrolling="no";
+                        
+                        div.appendChild(iframe);
+
+                        stream.replaceChild(div, existingChild);
+                    }                    
+                }
+
+                function hideVideoStream() {
+                    //<div class="card-body">
+                    //      <img id="no_signal_image" src="{{ url_for('static', filename='images/unauthorized-person-detected.png') }}" style='height: 70%; width: 70%; object-fit: contain; margin-left: 6em;'>
+                    //</div>
+                    var  stream = document.getElementById("stream");
+                    var existingChild = stream.firstChild;
+
+                    if (existingChild != "card-body"){                        
+                    
+                        var div = document.createElement("div");
+                        div.className = "card-body";
+
+                        var image = document.createElement("img");                        
+                        image.src = "{{ url_for('static', filename='images/no_signal.png') }}";
+                        image.style = "height: 70%; width: 70%; object-fit: contain; margin-left: 6em;";                    
+
+                        div.appendChild(image);
+
+                        stream.replaceChild(div, existingChild);
+                    }                    
+                }
+
+                location_socket.on('message', function (data) {
+
+                    msg = data.msg;
+
+                    document.getElementById('zone').innerHTML = msg.zonalPresenceNotification.zoneId;
+                    document.getElementById('state').innerHTML = msg.zonalPresenceNotification.userEventType;
+
+
+                    zonalStateOldClass = document.getElementById('zonal_state').className.split(" ");
+                    zonalStateOldClass = zonalStateOldClass[zonalStateOldClass.length - 1];
+                    currentApOldClass = document.getElementById('cap').className.split(" ");
+                    currentApOldClass = currentApOldClass[currentApOldClass.length - 1];
+
+                    switch (msg.zonalPresenceNotification.userEventType) {
+                        case "Leaving":
+                            //red                                        
+                            document.getElementById('zonal_state').classList.replace(zonalStateOldClass, cardRedClass);
+                            noSignal = true;
+                            document.getElementById('bitrate').innerHTML = "0";
+                            coverageColours();
+                            document.getElementById('cap').classList.replace(currentApOldClass, cardDarkBlueClass);
+                            rsrData[0] = 0;
+                            rsrData[1] = 0;
+                            config.data.datasets[0].data.push(rsrData);
+                            myChart.update();
+
+                            hideVideoStream();
+
+                            break;
+                        case "Entering":
+                            //green                    
+                            document.getElementById('zonal_state').classList.replace(zonalStateOldClass, cardGreenClass);
+                            document.getElementById('cap').classList.replace(currentApOldClass, cardGreenClass);
+
+                            showVideoStream();
+
+                            break;
+                        case "Transferring":
+                            //yellow                    
+                            document.getElementById('zonal_state').classList.replace(zonalStateOldClass, cardYellowClass);
+                            document.getElementById('cap').classList.replace(currentApOldClass, cardGreenClass);
+                            break;
+                    }
+
+                    if (msg.zonalPresenceNotification.userEventType == "Leaving") {
+                        document.getElementById('previousAP').innerHTML = msg.zonalPresenceNotification.currentAccessPointId;
+                        document.getElementById('currentAP').innerHTML = "";
+
+                    } else {
+
+                        document.getElementById('currentAP').innerHTML = msg.zonalPresenceNotification.currentAccessPointId;
+
+                        if (!"previousAccessPointId" in msg.zonalPresenceNotification) {
+                            document.getElementById('previousAP').innerHTML = "";
+                        } else {
+                            document.getElementById('previousAP').innerHTML = msg.zonalPresenceNotification.previousAccessPointId;
+                        }
+                    }
+
+                    appendNewNotification("zonalPresenceNotification")
+
+                })
+
+                rni_socket.on('message', function (data) {
+
+                    msg = data.msg;
+                    radio_type = data.radio_type;
+
+                    if (radio_type == "4g") {
+                        fourG = true;
+                        fiveG = false;
+                        noSignal = false;
+
+                        rsrData[0] = msg.rsrp;
+                        rsrData[1] = msg.rsrq;
+
+                        appendNewNotification("MeasRepUeNotification");
+
+                    } else {
+                        fiveG = true;
+                        fourG = false;
+                        noSignal = false;
+
+                        rsrData[0] = msg.servCellMeasInfo[0].sCell.measQuantityResultsSsbCell.rsrp;
+                        rsrData[1] = msg.servCellMeasInfo[0].sCell.measQuantityResultsSsbCell.rsrq;
+
+                        appendNewNotification("NrMeasRepUeNotification");
+                    }
+                    config.data.datasets[0].data.push(rsrData);
+                    myChart.update();
+                    coverageColours();
+                })
+
+                wai_socket.on('message', function (data) {
+                    msg = data.msg;
+                    wifi_type = data.wifi_type;
+
+                    if (wifi_type == "nowifi") {
+                        wifi = false;
+                    } else {
+                        wifi = true;
+                        fourG = false;
+                        fiveG = false;
+                        noSignal = false;
+
+                        rsrData[0] = 0;
+                        rsrData[1] = 0;
+                        config.data.datasets[0].data.push(rsrData);
+                        myChart.update();
+                    }
+
+                    appendNewNotification("AssocStaNotification");
+                    coverageColours();
+                })
+
+                appMode_socket.on('message', function (data) {
+                    var msg = data.msg;                    
+                    aiOldClass = document.getElementById('ai_card').className.split(" ");
+                    aiOldClass = aiOldClass[aiOldClass.length - 1];
+
+                    if (msg.mode == "surveillance") {
+                        document.getElementById('ai_text').innerHTML = "Not Running";                                                
+                        document.getElementById('drone_mode').innerHTML = "Surveillance";
+                        document.getElementById('ai_card').classList.replace(aiOldClass, cardGrayClass);
+                                                
+                        showSandboxMap();                        
+
+                    } else {
+                        document.getElementById('ai_text').innerHTML = "Running";
+                        //document.getElementById('video_resolution').innerHTML = msg.videoResolution;
+                        document.getElementById('drone_mode').innerHTML = "Tracking";
+                        document.getElementById('ai_card').classList.replace(aiOldClass, cardGreenClass);
+                        
+                        if (noSignal == false){
+                            hideSandBoxMap();                            
+                        }                        
+                    }                    
+                });
+
+                appBr_socket.on('message', function (data) {
+                    
+                    if (noSignal != true){
+                        var msg = data.msg;                    
+                        document.getElementById("bitrate").innerHTML = msg.bitrate;
+                    }                    
+                });
+            });
+        </script>        
+</body>
+
+</html>

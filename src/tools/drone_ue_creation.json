@@ -1,0 +1,76 @@
+{
+	"name": "drone",
+	"type": "SCENARIO-UPDATE",
+	"eventScenarioUpdate": {
+		"action": "ADD",
+		"node": {
+			"type": "UE",
+			"parent": "4g-macro-cell-1",
+			"nodeDataUnion": {
+				"physicalLocation": {
+					"name": "10.100.0.1",
+					"type": "UE",
+					"macId": "005C0A640002",
+					"wireless": true,
+					"wirelessType": "wifi,5g,4g",
+					"geoData": {
+						"location": {
+							"type": "Point",
+							"coordinates": [
+								7.4379921,
+								43.7486773
+							]
+						},
+						"path": {
+							"type": "LineString",
+							"coordinates": [
+								[
+									7.4379921,
+									43.7486773
+								],
+								[
+									7.4377869,
+									43.7495652
+								],
+								[
+									7.4387923,
+									43.7500930
+								],
+								[
+									7.4387676,
+									43.7509894
+								],
+								[
+									7.4417901,
+									43.7525730
+								],
+                                                                [
+                                                                        7.4418092,
+                                                                        43.7516823
+                                                                ],
+                                                                [
+                                                                        7.4428187,
+                                                                        43.7522110
+                                                                ],
+                                                                [
+                                                                        7.4430010,
+                                                                        43.7513261
+                                                                ],
+								[
+                                                                        7.4379921,
+                                                                        43.7486773
+                                                                ]
+							]
+					},					
+					"eopMode": "LOOP",
+					"velocity": 20
+					},					
+					"meta": {
+						"display.map.icon": "ion-android-plane"
+					},
+					"netChar": {}
+				}
+			}
+		}
+	}
+}

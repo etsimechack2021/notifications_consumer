@@ -1,0 +1,11 @@
+{
+  "subscriptionType": "AssocStaSubscription",
+  "callbackReference": "http://193.146.210.231:6100/callbacks/wai/nowifi",
+  "apId": {
+    "bssid": "005C0A0A0A0A"
+  },
+  "notificationEvent": {
+	  "threshold": 0,
+	  "trigger": 2 
+  }
+}
